@@ -3,6 +3,7 @@ import { Route } from "react-router-dom"
 import { Home } from "./Home"
 import { FavoriteList } from "./favorites/FavoriteList"
 import { FavoriteProvider } from "./favorites/FavoriteProvider"
+import { UserProvider } from "./users/UserProvider"
 
 
 export const ApplicationViews = () => {
@@ -13,9 +14,11 @@ export const ApplicationViews = () => {
         </Route>
 
         <FavoriteProvider>
+
             <Route exact path ="/favorites">
                 <FavoriteList />
             </Route>
+
         </FavoriteProvider>
         </>
     )

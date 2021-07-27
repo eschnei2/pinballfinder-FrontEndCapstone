@@ -7,13 +7,13 @@ export const FavoriteProvider = (props) => {
     const [searchTerms, setSearchTerms] = useState("");
 
     const getFavoriteById = (id) => {
-        return fetch(`http://localhost:8088/favorites/${id}?_expand=user&_expand=machines`).then((res) =>
+        return fetch(`http://localhost:8088/favorites/${id}?_expand=user&_expand=machine`).then((res) =>
             res.json()
         ) // note we don't set anything on state here. Why?
     }
 
      const getFavorites = () => {
-        return fetch("http://localhost:8088/favorites?_expand=user&_expand=machines")
+        return fetch("http://localhost:8088/favorites?_expand=user&_expand=machine")
             .then((res) => res.json())
             .then(setFavorites)
     } 
@@ -28,7 +28,7 @@ export const FavoriteProvider = (props) => {
     }
 
     const updateFavorite = (favorite) => {
-        return fetch(`http://localhost:8088/favorites/${favorite.id}?_expand=user&_expand=machines`, {
+        return fetch(`http://localhost:8088/favorites/${favorite.id}?_expand=user&_expand=machine`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -38,7 +38,7 @@ export const FavoriteProvider = (props) => {
     }
 
     const removeFavorite = favoriteId => {
-        return fetch(`http://localhost:8088/favorites/${favoriteId}?_expand=user&_expand=machines`, {
+        return fetch(`http://localhost:8088/favorites/${favoriteId}?_expand=user&_expand=machine`, {
             method: "DELETE"
         })
             .then(getFavorites)
