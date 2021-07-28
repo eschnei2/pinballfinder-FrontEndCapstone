@@ -11,7 +11,6 @@ export const FavoriteList = () => {
   }, [])
 
   const currentUserId = parseInt(sessionStorage.getItem("pinball_user"))
- /*  console.log(favorites) */
 
   return (
     <>
@@ -19,10 +18,9 @@ export const FavoriteList = () => {
     <div className="favorites">
       {
         favorites.map(favorite => {
-          {/* {console.log(favorite.user?.firstName)} */}
-          if(currentUserId === favorite.user?.userId){}
+          if(currentUserId === favorite.userId){
           return <FavoriteItem key={favorite.id} favorite={favorite} />
-        })
+        }})
       }
     </div>
     </>
