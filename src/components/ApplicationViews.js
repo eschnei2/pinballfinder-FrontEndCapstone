@@ -10,6 +10,9 @@ import { MachineDetail } from "./machines/MachineDetail"
 import { ArcadeProvider } from "./arcades/ArcadeProvider"
 import { ArcadeList } from "./arcades/ArcadeList"
 import { ArcadeDetail } from "./arcades/ArcadeDetail"
+import { ForumProvider } from "./forums/ForumProvider"
+import { ForumList } from "./forums/ForumList"
+import { ForumForm } from "./forums/ForumForm"
 
 
 export const ApplicationViews = () => {
@@ -29,18 +32,26 @@ export const ApplicationViews = () => {
             <Route exact path="/machines">
                <MachineList />
             </Route>
-            <Route exact path="/machines/detail/:machineId(\d+)">
-               <MachineDetail />
-            </Route>
+            <ForumProvider>
+                <Route exact path="/machines/detail/:machineId(\d+)">
+                    <MachineDetail />
+                    <ForumList />
+                </Route>
+            </ForumProvider>
         </MachineProvider>
 
         <ArcadeProvider>
             <Route exact path="/arcades">
                <ArcadeList />
             </Route>
-            <Route exact path="/arcades/detail/:arcadeId(\d+)">
-               <ArcadeDetail />
-            </Route>
+            <ForumProvider>
+                <Route exact path="/arcades/detail/:arcadeId(\d+)">       
+                    <ArcadeDetail />
+                </Route>
+                <Route exact path="/forums/edit/:forumId(\d+)">       
+                    <ForumForm />
+                </Route>
+            </ForumProvider>
         </ArcadeProvider>
         </>
     )

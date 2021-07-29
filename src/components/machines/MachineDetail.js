@@ -19,14 +19,11 @@ export const MachineDetail = () => {
     } 
 
      useEffect(() => {
-        console.log("useEffect", machineId)
         getMachineById(machineId)
         .then((response) => {
             setMachine(response)
         })
     }, []) 
-
-    console.log(machineId)
 
 
     return (
