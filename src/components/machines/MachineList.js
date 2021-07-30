@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from "react"
 import { MachineContext } from "./MachinesProvider"
 import { MachineItem } from "./MachineItem"
+import { Link } from "react-router-dom"
 
 
 export const MachineList = () => {
@@ -14,6 +15,9 @@ export const MachineList = () => {
 
   return (
     <>
+    <Link className="nav-link" to="/machines/create">
+                        Add a pinball machine
+            </Link>
     <h1>Pinball Machines</h1>
     <div className="machines">
       {

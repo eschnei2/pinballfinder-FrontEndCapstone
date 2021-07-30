@@ -10,6 +10,10 @@ import { MachineDetail } from "./machines/MachineDetail"
 import { ArcadeProvider } from "./arcades/ArcadeProvider"
 import { ArcadeList } from "./arcades/ArcadeList"
 import { ArcadeDetail } from "./arcades/ArcadeDetail"
+import { ForumProvider } from "./forums/ForumProvider"
+import { ForumList } from "./forums/ForumList"
+import { ForumForm } from "./forums/ForumForm"
+import { MachineForm } from "./machines/MachineForum"
 
 
 export const ApplicationViews = () => {
@@ -24,23 +28,39 @@ export const ApplicationViews = () => {
                 <FavoriteList />
             </Route>
         </FavoriteProvider>
-
         <MachineProvider>
             <Route exact path="/machines">
                <MachineList />
             </Route>
-            <Route exact path="/machines/detail/:machineId(\d+)">
-               <MachineDetail />
+            <Route path="/machines/edit/:machineId(\d+)">
+                <MachineForm />
             </Route>
+            <Route path="/machines/create">
+                <MachineForm />
+            </Route>
+            
+            <ForumProvider>
+                <FavoriteProvider>
+                    <Route exact path="/machines/detail/:machineId(\d+)">
+                        <MachineDetail />
+                        <ForumList />
+                    </Route>
+                </FavoriteProvider>
+            </ForumProvider>
         </MachineProvider>
 
         <ArcadeProvider>
             <Route exact path="/arcades">
                <ArcadeList />
             </Route>
-            <Route exact path="/arcades/detail/:arcadeId(\d+)">
-               <ArcadeDetail />
-            </Route>
+            <ForumProvider>
+                <Route exact path="/arcades/detail/:arcadeId(\d+)">       
+                    <ArcadeDetail />
+                </Route>
+                <Route exact path="/forums/edit/:forumId(\d+)">       
+                    <ForumForm />
+                </Route>
+            </ForumProvider>
         </ArcadeProvider>
         </>
     )
