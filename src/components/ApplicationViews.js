@@ -13,6 +13,7 @@ import { ArcadeDetail } from "./arcades/ArcadeDetail"
 import { ForumProvider } from "./forums/ForumProvider"
 import { ForumList } from "./forums/ForumList"
 import { ForumForm } from "./forums/ForumForm"
+import { MachineForm } from "./machines/MachineForum"
 
 
 export const ApplicationViews = () => {
@@ -27,16 +28,24 @@ export const ApplicationViews = () => {
                 <FavoriteList />
             </Route>
         </FavoriteProvider>
-
         <MachineProvider>
             <Route exact path="/machines">
                <MachineList />
             </Route>
+            <Route path="/machines/edit/:machineId(\d+)">
+                <MachineForm />
+            </Route>
+            <Route path="/machines/create">
+                <MachineForm />
+            </Route>
+            
             <ForumProvider>
-                <Route exact path="/machines/detail/:machineId(\d+)">
-                    <MachineDetail />
-                    <ForumList />
-                </Route>
+                <FavoriteProvider>
+                    <Route exact path="/machines/detail/:machineId(\d+)">
+                        <MachineDetail />
+                        <ForumList />
+                    </Route>
+                </FavoriteProvider>
             </ForumProvider>
         </MachineProvider>
 
