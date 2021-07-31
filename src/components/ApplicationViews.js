@@ -14,6 +14,8 @@ import { ForumProvider } from "./forums/ForumProvider"
 import { ForumList } from "./forums/ForumList"
 import { ForumForm } from "./forums/ForumForm"
 import { MachineForm } from "./machines/MachineForum"
+import { ArcadeMachineProvider } from "./arcademachine/ArcadeMachineProvider"
+import { ArcadeSelectMachine } from "./arcades/ArcadeSelectMachine"
 
 
 export const ApplicationViews = () => {
@@ -51,7 +53,7 @@ export const ApplicationViews = () => {
 
         <ArcadeProvider>
             <Route exact path="/arcades">
-               <ArcadeList />
+                <ArcadeList />
             </Route>
             <ForumProvider>
                 <Route exact path="/arcades/detail/:arcadeId(\d+)">       
@@ -62,6 +64,16 @@ export const ApplicationViews = () => {
                 </Route>
             </ForumProvider>
         </ArcadeProvider>
+
+        <ArcadeMachineProvider>
+            <ArcadeProvider>
+              <MachineProvider>
+                <Route exact path="/arcades/addtolocation/:arcadeId(\d+)">
+                    <ArcadeSelectMachine />
+                </Route>
+              </MachineProvider>
+            </ArcadeProvider>
+        </ArcadeMachineProvider>
         </>
     )
 }

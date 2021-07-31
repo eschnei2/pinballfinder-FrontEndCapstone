@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react"
 import { ArcadeContext } from "./ArcadeProvider"
 import { useParams, useHistory } from "react-router-dom"
+import { Link } from "react-router-dom"
 
 
 export const ArcadeDetail = () => {
@@ -19,7 +20,6 @@ export const ArcadeDetail = () => {
     } 
 
      useEffect(() => {
-        console.log("useEffect", arcadeId)
         getArcadeById(arcadeId)
         .then((response) => {
             setArcade(response)
@@ -29,8 +29,13 @@ export const ArcadeDetail = () => {
 
     return (
         <>
+
+    <Link to={`/arcades/addtolocation/${arcade.id}`}>
+        add machine
+    </Link>
+        <h1>{arcade.name}</h1>
         <button onClick={handleRemove}>
-            fuckem up
+            delete
         </button>
         </>
     )

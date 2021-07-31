@@ -57,8 +57,6 @@ export const MachineForm = () => {
             setIsLoading(false)
         }
           }, []) 
-
-    console.log(machine)
     
 
     return (

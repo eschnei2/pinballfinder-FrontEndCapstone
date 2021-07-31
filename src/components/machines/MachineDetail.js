@@ -78,7 +78,7 @@ export const MachineDetail = () => {
         <h1>{machine.name}</h1>
         <ReactPlayer url={machine.videoURL} />
         <button onClick={handleRemove}>
-            fuckem up
+            Delete
         </button>
         {handleLikes}
 

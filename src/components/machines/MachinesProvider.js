@@ -6,7 +6,7 @@ export const MachineProvider = (props) => {
     const [machines, setMachines ] = useState([])
 
     const getMachines = () => {
-        return fetch("http://localhost:8088/machines")
+        return fetch("http://localhost:8088/machines?_embed=arcadeMachines")
         .then(response => response.json())
         .then(setMachines)
     }
@@ -29,7 +29,7 @@ export const MachineProvider = (props) => {
     }
 
     const getMachineById = id => {
-        return fetch(`http://localhost:8088/machines/${id}`)
+        return fetch(`http://localhost:8088/machines/${id}?_embed=arcadeMachines`)
         .then(response => response.json())
     }
 
