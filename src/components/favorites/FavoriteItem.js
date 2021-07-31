@@ -1,12 +1,14 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 
 export const FavoriteItem = ({ favorite }) => (
     <>
 
-    {console.log(favorite)}
-    <section className="favorite">
-        <h3 className="favorite__name">{favorite.machine?.name}</h3>
-    </section>
+    <h3>
+    <Link to={`/machines/detail/${favorite.userId}`}>
+        {favorite.machine?.name}
+    </Link>
+    </h3>
     </>
 )
