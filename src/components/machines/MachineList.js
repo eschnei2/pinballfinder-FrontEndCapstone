@@ -1,11 +1,23 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useState } from "react"
 import { MachineContext } from "./MachinesProvider"
 import { MachineItem } from "./MachineItem"
 import { Link } from "react-router-dom"
+import SearchField from "react-search-field"
 
 
 export const MachineList = () => {
-  const { machines, getMachines } = useContext(MachineContext)
+  const { machines, getMachines, searchTerms } = useContext(MachineContext)
+
+  const [ filteredMachines, setFiltered ] = useState([])
+
+  useEffect(() => {
+    if (searchTerms !== "") {
+      const subset = machines.filter(machine => machine.name.toLowerCase().includes(searchTerms))
+      setFiltered(subset)
+    } else {
+      setFiltered(machines)
+    }
+  }, [searchTerms, machines])
 
   useEffect(() => {
     getMachines()
@@ -17,11 +29,11 @@ export const MachineList = () => {
     <>
     <Link className="nav-link" to="/machines/create">
                         Add a pinball machine
-            </Link>
+    </Link>
     <h1>Pinball Machines</h1>
     <div className="machines">
       {
-        machines.map(machine => {
+        filteredMachines.map(machine => {
         return <MachineItem key={machine.id} machine={machine} />
         })
       }

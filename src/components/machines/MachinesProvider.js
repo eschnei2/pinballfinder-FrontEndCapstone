@@ -4,6 +4,7 @@ export const MachineContext = createContext()
 
 export const MachineProvider = (props) => {
     const [machines, setMachines ] = useState([])
+    const [ searchTerms, setSearchTerms ] = useState("")
 
     const getMachines = () => {
         return fetch("http://localhost:8088/machines?_embed=arcadeMachines")
@@ -45,7 +46,7 @@ export const MachineProvider = (props) => {
 
     return (
         <MachineContext.Provider value={{
-            machines, getMachines, addMachine, removeMachine, getMachineById, updateMachine
+            machines, getMachines, addMachine, removeMachine, getMachineById, updateMachine, searchTerms, setSearchTerms
         }}>
             {props.children}
         </MachineContext.Provider>

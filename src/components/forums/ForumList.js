@@ -24,6 +24,7 @@ export const ForumList = () => {
         newBody[event.target.id] = event.target.value
         setBody(newBody)
       }
+      
 
     const handleAdd = () => {
         addForum({
@@ -31,7 +32,6 @@ export const ForumList = () => {
             machineId: parseInt(machineId),
             text: body.text
         })
-        .then(() => history.push(`/machines/detail/${machineId}`))
     }
 
 
