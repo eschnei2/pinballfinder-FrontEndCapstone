@@ -3,6 +3,8 @@ import { ArcadeContext } from "./ArcadeProvider"
 import { useParams, useHistory } from "react-router-dom"
 import { Link } from "react-router-dom"
 import { ArcadeMachineContext } from "../arcademachine/ArcadeMachineProvider"
+import { Map, GoogleApiWrapper } from 'google-maps-react';
+import { ArcadeAPI } from "./ArcadeAPI"
 
 
 export const ArcadeDetail = () => {
@@ -57,6 +59,7 @@ export const ArcadeDetail = () => {
         </Link>
     }
 
+    let https = `https://www.google.com/maps/embed/v1/place?key=${ArcadeAPI}&q=${arcade.state}+${arcade.city},${arcade.street}`
 
 
 
@@ -77,6 +80,7 @@ export const ArcadeDetail = () => {
     {handleAddMachine}
         <h1>{arcade.name}</h1>
         {handleDelete}
+        <iframe src={https} id="gameembed" class="iframegame" frameborder="0" width="300" height ="300"></iframe>
     </>
     )
 

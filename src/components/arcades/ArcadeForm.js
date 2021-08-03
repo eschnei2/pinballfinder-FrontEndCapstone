@@ -31,6 +31,7 @@ export const ArcadeForm = () => {
                     street: arcade.street,
                     state: arcade.state,
                     zipcode: arcade.zipcode,
+                    city: arcade.city,
                     userId: currentUserId
                 })
                 .then(() => history.push(`/arcades/detail/${arcade.id}`))
@@ -40,6 +41,7 @@ export const ArcadeForm = () => {
                     street: arcade.street,
                     state: arcade.state,
                     zipcode: arcade.zipcode,
+                    city: arcade.city,
                     userId: currentUserId
                 })
                 .then(() => history.push(`/arcades`))
@@ -65,6 +67,7 @@ export const ArcadeForm = () => {
         <h1>Pinball arcade!</h1>
         <input type="text" id="name" required autoFocus className="form-control" placeholder="Arcade Name" value={arcade.name} onChange={handleControlledInputChange} />
         <input type="text" id="street" required autoFocus className="form-control" placeholder="street" value={arcade.street} onChange={handleControlledInputChange} />
+        <input type="text" id="city" required autoFocus className="form-control" placeholder="city" value={arcade.city} onChange={handleControlledInputChange} />
         <input type="text" id="state" required autoFocus className="form-control" placeholder="State" value={arcade.state} onChange={handleControlledInputChange} />
         <input type="text" id="zipcode" required autoFocus className="form-control" placeholder="zipcode" value={arcade.zipcode} onChange={handleControlledInputChange} />
          <button className="btn btn-primary" disabled={isLoading} onClick={event => {
