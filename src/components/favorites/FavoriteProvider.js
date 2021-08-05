@@ -9,7 +9,7 @@ export const FavoriteProvider = (props) => {
     const getFavoriteById = (id) => {
         return fetch(`http://localhost:8088/favorites/${id}?_expand=user&_expand=machine`).then((res) =>
             res.json()
-        ) // note we don't set anything on state here. Why?
+        ) 
     }
 
      const getFavorites = () => {

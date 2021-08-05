@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { useHistory } from "react-router-dom";
-
+import Grid from '@material-ui/core/Grid'
+import spacecadet from '../images/flipper.jpg'
 import "./Login.css"
 
 export const Register = () => {
@@ -17,7 +18,6 @@ export const Register = () => {
     }
 
     const existingUserCheck = () => {
-        // If your json-server URL is different, please change it below!
         return fetch(`http://localhost:8088/users?email=${registerUser.email}`)
             .then(res => res.json())
             .then(user => !!user.length)
@@ -29,7 +29,6 @@ export const Register = () => {
         existingUserCheck()
             .then((userExists) => {
                 if (!userExists) {
-                    // If your json-server URL is different, please change it below!
                     fetch("http://localhost:8088/users", {
                         method: "POST",
                         headers: {
@@ -44,7 +43,6 @@ export const Register = () => {
                         .then(res => res.json())
                         .then(createdUser => {
                             if (createdUser.hasOwnProperty("id")) {
-                                // The user id is saved under the key nutshell_user in session Storage. Change below if needed!
                                 sessionStorage.setItem("pinball_user", createdUser.id)
                                 history.push("/")
                             }
@@ -58,8 +56,12 @@ export const Register = () => {
     }
 
     return (
+        <>
         <main style={{ textAlign: "center" }}>
-
+        <Grid container
+        justifyContent="center" direction="column" alignItems="center">
+        <img src={spacecadet} width="800" height="300" />
+        </Grid>
             <dialog className="dialog dialog--password" open={conflictDialog}>
                 <div>Account with that email address already exists</div>
                 <button className="button--close" onClick={e => setConflictDialog(false)}>Close</button>
@@ -84,5 +86,6 @@ export const Register = () => {
                 </fieldset>
             </form>
         </main>
+        </>
     )
 }
