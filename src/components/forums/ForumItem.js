@@ -2,6 +2,10 @@ import React, { useContext, useEffect } from "react"
 import { Link } from "react-router-dom"
 import { useParams, useHistory } from "react-router-dom"
 import { ForumContext } from "./ForumProvider"
+import Button from '@material-ui/core/Button'
+import DeleteIcon from '@material-ui/icons/Delete';
+import EditIcon from '@material-ui/icons/Edit';
+import ButtonGroup from '@material-ui/core/ButtonGroup'
 
 
 
@@ -15,19 +19,20 @@ export const ForumItem = ({ forum }) => {
     const handleRemove = () => {
         removeForum(forum.id)
         .then(() => {
-            /* history.push("/machines") */
         })
     }
 
     let userButtons
     if(currentUserId === forum.userId) {
         userButtons = <>
-        <button onClick={handleRemove}>
+        <ButtonGroup>
+        <Button onClick={handleRemove} variant="contained" color="secondary" startIcon={<DeleteIcon />} size="small" >
             Delete Post
-        </button>
-        <button onClick={() => history.push(`/forums/edit/${forum.id}`)}>
+        </Button>
+        <Button onClick={() => history.push(`/forums/edit/${forum.id}`)} variant="contained" color="primary" startIcon={<EditIcon />} size="small">
             Edit Post
-        </button>
+        </Button>
+        </ButtonGroup>
         </>
     }
 
@@ -35,9 +40,7 @@ export const ForumItem = ({ forum }) => {
     return(
     <>
     <section className="forum">
-        <h6 className="forum__name">
         {forum.text}
-        </h6>
         {userButtons}
     </section>
     </>

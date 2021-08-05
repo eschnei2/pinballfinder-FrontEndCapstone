@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react"
 import { useHistory, useParams } from "react-router"
 import { ForumContext } from "./ForumProvider"
+import Button from '@material-ui/core/Button'
+import EditIcon from '@material-ui/icons/Edit';
 
 export const ForumForm = () => {
     const currentUserId = parseInt(sessionStorage.getItem("pinball_user"))
@@ -41,11 +43,11 @@ export const ForumForm = () => {
         placeholder="make a post"
         onChange={handleControlledInputChange}
         value={forum.text} />
-        <button onClick={event => {
+        <Button onClick={event => {
             event.preventDefault()
-            handleUpdate()}}>
+            handleUpdate()}} variant="contained" color="primary" startIcon={<EditIcon />} size="small">
             Update Post
-        </button>
+        </Button>
         </>
         
     )
