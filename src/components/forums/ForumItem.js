@@ -36,12 +36,15 @@ export const ForumItem = ({ forum }) => {
         </>
     }
 
+    console.log(forum.user?.firstName)
+
     
     return(
     <>
     <section className="forum">
         {forum.text}
         {userButtons}
+        <h6>by {forum.user?.firstName}</h6>
     </section>
     </>
 )

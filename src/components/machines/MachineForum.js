@@ -65,15 +65,18 @@ export const MachineForm = () => {
     return (
         <>
         <h1>Pinball Machine!</h1>
+        <div>
         <input type="text" id="name" required autoFocus className="form-control" placeholder="Pinball Machine Name" value={machine.name} onChange={handleControlledInputChange} />
+        </div>
         <input type="text" id="maker" required autoFocus className="form-control" placeholder="maker" value={machine.maker} onChange={handleControlledInputChange} />
+        <div></div>
         <input type="text" id="videoURL" required autoFocus className="form-control" placeholder="Video URL" value={machine.videoURL} onChange={handleControlledInputChange} />
-         <button className="btn btn-primary" disabled={isLoading} onClick={event => {
+         <Button className="btn btn-primary" disabled={isLoading} variant="contained" color="primary" startIcon={<EditIcon />} onClick={event => {
                 event.preventDefault()
                 handleClickSaveMachine()
             }}>
                 {machineId ? <>Edit Machine</> : <>Add Machine</>}
-            </button>
+            </Button>
         </>
     )
 
