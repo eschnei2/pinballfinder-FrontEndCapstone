@@ -1,3 +1,5 @@
+The purpose of this app is to crowdsource a list of what pinball machines are in what arcades.
+
 This is a React App.
 
 To run this app you will need run this with an npm start, as well start a json server in port 8088. so that means in js.node use 

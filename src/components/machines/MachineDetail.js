@@ -86,7 +86,7 @@ export const MachineDetail = () => {
         <>
         <Grid container
         justifyContent="center" direction="column" alignItems="center">
-        <img src={spacecadet} width="500" height="300" />
+        <img src={spacecadet} width="500" height="300" minheight="50" minwidth="75" />
         </Grid>
         <Grid container
         justifyContent="flex-start" direction="column" alignItems="flex-end">
